@@ -2,7 +2,9 @@ package DP;
 
 public class CLimb_1 {
 	public static void main(String[] args) {
-
+		System.out.println(climb_BU(5));
+		System.out.println(climb_BUSE(5));
+		
 	}
 
 	public static int climb(int curr, int n) {
@@ -44,5 +46,17 @@ public class CLimb_1 {
 		}
 		return dp[0];
 	}
-
+	public static int climb_BUSE(int n) {
+		int[] dp = new int[2];
+		dp[0]=1;
+		for (int curr = n-1; curr >= 0; curr--) {
+	//	climb(curr)
+			int sp1 = dp[0];
+			int sp2 = dp[1];
+			int ans = sp1 + sp2;
+			dp[1] = dp[0];
+			dp[0] = ans;
+		}
+		return dp[0];
+	}
 }
