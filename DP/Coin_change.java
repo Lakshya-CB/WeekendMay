@@ -37,8 +37,9 @@ public class Coin_change {
 
 	public static int solveBU(int[] Coins, int Amount) {
 		int[][] dp = new int[Coins.length + 1][Amount + 1];
-		for (int idx = Coins.length - 1; idx >= 0; idx--) {
-			for (int A = 0; A <= Amount; A++) {
+		for (int A = 0; A <= Amount; A++) {
+			for (int idx = Coins.length - 1; idx >= 0; idx--) {
+
 //				sol(idx, A)
 //				coins = {10,3,5,8,11};
 				if (A == 0) {
@@ -73,9 +74,9 @@ public class Coin_change {
 				int sp2 = dp[1][A];
 				dp[0][A] = sp1 + sp2;
 			}
-			dp[1]= dp[0];
-			dp[0] = new int[Amount+1];
+			dp[1] = dp[0];
+			dp[0] = new int[Amount + 1];
 		}
-		return dp[0][Amount];
+		return dp[1][Amount];
 	}
 }
